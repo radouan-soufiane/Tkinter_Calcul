@@ -15,8 +15,7 @@ Pour exécuter ce projet, vous devez avoir **Python** installé sur votre machin
 
 1. **Cloner le projet ou télécharger le ZIP :**
    ```bash
-   git clone [https://github.com/damsirY/calculator-tkinter.git](https://github.com/damsirY/calculator-tkinter.git)
-
+   git clone 
 2. **Accéder au dossier et lancer le programme :**
    ```bash
    cd calculator-tkinter
