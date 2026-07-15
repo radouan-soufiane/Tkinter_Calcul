@@ -1,0 +1,60 @@
+import tkinter as tk
+
+
+# Fonction dyal l-calcul
+def press_key(key):
+    current = entry.get()
+    if key == "C":
+        entry.delete(0, tk.END)
+    elif key == "=":
+        try:
+            # eval kat-calculi l-ktaba li f text (ex: "2+5")
+            result = eval(current)
+            entry.delete(0, tk.END)
+            entry.insert(tk.END, str(result))
+        except:
+            entry.delete(0, tk.END)
+            entry.insert(tk.END, "Erreur")
+    else:
+        entry.insert(tk.END, key)
+
+
+# Khla9na l-fenêtre
+root = tk.Tk()
+root.title("Calculatrice Tkinter")
+root.geometry("300x400")
+
+# Ecran dyal l-calculatrice
+entry = tk.Entry(root, font=("Arial", 20), justify="right", bd=10)
+entry.pack(fill="both", ipadx=8, pady=10, padx=10)
+
+# L-boutonnat rthbnahom f Grid (Jdwel)
+buttons = [
+    ["7", "8", "9", "/"],
+    ["4", "5", "6", "*"],
+    ["1", "2", "3", "-"],
+    ["C", "0", "=", "+"],
+] 
+
+# Khla9na un cadre (Frame) l l-boutonnat
+button_frame = tk.Frame(root)
+button_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+# Affichage dyal l-boutonnat b les boucles
+for row_idx, row in enumerate(buttons):
+    for col_idx, text in enumerate(row):
+        btn = tk.Button(
+            button_frame,
+            text=text,
+            font=("Arial", 14),
+            command=lambda t=text: press_key(t),
+        )
+        # grid kat-7et kol bouton f l-blastou (Satar w l-3amoud)
+        btn.grid(row=row_idx, column=col_idx, sticky="nsew", padx=5, pady=5)
+
+# Bach l-boutonnat yakhou l-mesaha kamla
+for i in range(4):
+    button_frame.rowconfigure(i, weight=1)
+    button_frame.columnconfigure(i, weight=1)
+
+root.mainloop()
